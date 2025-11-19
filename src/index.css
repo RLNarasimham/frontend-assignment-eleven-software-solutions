@@ -21,12 +21,11 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Improve touch targets */
+
   button, a, input, select, textarea {
     @apply touch-manipulation;
   }
 
-  /* Prevent text selection on buttons */
   button {
     -webkit-user-select: none;
     -moz-user-select: none;
@@ -35,7 +34,6 @@
     cursor: pointer;
   }
 
-  /* Ensure buttons are clickable on mobile */
   button:not(:disabled) {
     pointer-events: auto;
     -webkit-tap-highlight-color: transparent;
@@ -46,7 +44,6 @@
     pointer-events: none;
   }
 
-  /* Ensure proper touch handling */
   button {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
@@ -56,12 +53,10 @@
     user-select: none;
   }
 
-  /* Prevent 300ms click delay on mobile */
   button, a, input, select, textarea {
     touch-action: manipulation;
   }
 
-  /* Improve form inputs on mobile */
   input[type="text"],
   input[type="email"],
   input[type="number"],
@@ -76,7 +71,6 @@
     appearance: none;
   }
 
-  /* Prevent zoom on input focus on iOS */
   @media screen and (max-width: 768px) {
     input[type="text"],
     input[type="email"],
@@ -92,7 +86,6 @@
 }
 
 @layer utilities {
-  /* Ensure minimum touch target size */
   .touch-manipulation {
     touch-action: manipulation;
     -webkit-tap-highlight-color: transparent;
