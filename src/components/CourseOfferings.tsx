@@ -102,18 +102,18 @@ export const CourseOfferings = () => {
 
   return (
     <div className="space-y-4 sm:space-y-6">
-      <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
-        <h2 className="text-xl sm:text-2xl font-bold text-gray-800 mb-4 sm:mb-6">Course Offerings</h2>
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6 transition-colors duration-200">
+        <h2 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-100 mb-4 sm:mb-6 transition-colors">Course Offerings</h2>
 
         <div className="mb-4 sm:mb-6">
-          <label className="block text-sm font-medium text-gray-700 mb-2">
+          <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors">
             Add New Course Offering
           </label>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-3">
             <select
               value={selectedCourse}
               onChange={(e) => setSelectedCourse(e.target.value)}
-              className="px-3 sm:px-4 py-2.5 sm:py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent touch-manipulation bg-white"
+              className="px-3 sm:px-4 py-2.5 sm:py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent touch-manipulation bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors"
             >
               <option value="">Select Course</option>
               {state.courses.map((course) => (
@@ -125,7 +125,7 @@ export const CourseOfferings = () => {
             <select
               value={selectedCourseType}
               onChange={(e) => setSelectedCourseType(e.target.value)}
-              className="px-3 sm:px-4 py-2.5 sm:py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent touch-manipulation bg-white"
+              className="px-3 sm:px-4 py-2.5 sm:py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent touch-manipulation bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors"
             >
               <option value="">Select Course Type</option>
               {state.courseTypes.map((courseType) => (
@@ -150,23 +150,23 @@ export const CourseOfferings = () => {
             <Plus size={18} className="sm:w-5 sm:h-5" />
             <span>Add Course Offering</span>
           </button>
-          {error && <p className="text-red-600 text-sm mt-2">{error}</p>}
+          {error && <p className="text-red-600 dark:text-red-400 text-sm mt-2 transition-colors">{error}</p>}
           {state.courses.length === 0 && (
-            <p className="text-amber-600 text-sm mt-2">Please add courses first</p>
+            <p className="text-amber-600 dark:text-amber-400 text-sm mt-2 transition-colors">Please add courses first</p>
           )}
           {state.courseTypes.length === 0 && (
-            <p className="text-amber-600 text-sm mt-2">Please add course types first</p>
+            <p className="text-amber-600 dark:text-amber-400 text-sm mt-2 transition-colors">Please add course types first</p>
           )}
         </div>
 
         <div className="space-y-2 sm:space-y-3">
           {state.courseOfferings.length === 0 ? (
-            <p className="text-gray-500 text-center py-8 text-sm sm:text-base">No course offerings added yet</p>
+            <p className="text-gray-500 dark:text-gray-400 text-center py-8 text-sm sm:text-base transition-colors">No course offerings added yet</p>
           ) : (
             state.courseOfferings.map((offering) => (
               <div
                 key={offering.id}
-                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors"
+                className="flex flex-col sm:flex-row items-stretch sm:items-center gap-2 sm:gap-3 p-3 sm:p-4 bg-gray-50 dark:bg-gray-700 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-600 transition-colors"
               >
                 {editingId === offering.id ? (
                   <>
@@ -174,7 +174,7 @@ export const CourseOfferings = () => {
                       <select
                         value={editCourse}
                         onChange={(e) => setEditCourse(e.target.value)}
-                        className="px-3 py-2.5 sm:py-2 text-base border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent touch-manipulation bg-white"
+                        className="px-3 py-2.5 sm:py-2 text-base border border-gray-300 dark:border-gray-600 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent touch-manipulation bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors"
                       >
                         <option value="">Select Course</option>
                         {state.courses.map((course) => (
@@ -186,7 +186,7 @@ export const CourseOfferings = () => {
                       <select
                         value={editCourseType}
                         onChange={(e) => setEditCourseType(e.target.value)}
-                        className="px-3 py-2.5 sm:py-2 text-base border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent touch-manipulation bg-white"
+                        className="px-3 py-2.5 sm:py-2 text-base border border-gray-300 dark:border-gray-600 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent touch-manipulation bg-white dark:bg-gray-800 text-gray-900 dark:text-gray-100 transition-colors"
                       >
                         <option value="">Select Course Type</option>
                         {state.courseTypes.map((courseType) => (
@@ -223,7 +223,7 @@ export const CourseOfferings = () => {
                   </>
                 ) : (
                   <>
-                    <span className="flex-1 text-gray-800 font-medium text-sm sm:text-base break-words">
+                    <span className="flex-1 text-gray-800 dark:text-gray-100 font-medium text-sm sm:text-base break-words transition-colors">
                       {getOfferingName(offering.courseId, offering.courseTypeId)}
                     </span>
                     <div className="flex gap-2 sm:flex-shrink-0 self-end sm:self-auto">
@@ -234,7 +234,7 @@ export const CourseOfferings = () => {
                           e.stopPropagation();
                           startEdit(offering.id, offering.courseId, offering.courseTypeId);
                         }}
-                        className="p-2.5 sm:p-2 text-blue-600 hover:bg-blue-50 active:bg-blue-100 rounded transition-colors touch-manipulation min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 flex items-center justify-center cursor-pointer relative z-10"
+                        className="p-2.5 sm:p-2 text-blue-600 dark:text-blue-400 hover:bg-blue-50 dark:hover:bg-blue-900/30 active:bg-blue-100 dark:active:bg-blue-900/50 rounded transition-colors touch-manipulation min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 flex items-center justify-center cursor-pointer relative z-10"
                         title="Edit"
                         aria-label="Edit"
                       >
@@ -247,7 +247,7 @@ export const CourseOfferings = () => {
                           e.stopPropagation();
                           handleDelete(offering.id);
                         }}
-                        className="p-2.5 sm:p-2 text-red-600 hover:bg-red-50 active:bg-red-100 rounded transition-colors touch-manipulation min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 flex items-center justify-center cursor-pointer relative z-10"
+                        className="p-2.5 sm:p-2 text-red-600 dark:text-red-400 hover:bg-red-50 dark:hover:bg-red-900/30 active:bg-red-100 dark:active:bg-red-900/50 rounded transition-colors touch-manipulation min-w-[44px] min-h-[44px] sm:min-w-0 sm:min-h-0 flex items-center justify-center cursor-pointer relative z-10"
                         title="Delete"
                         aria-label="Delete"
                       >

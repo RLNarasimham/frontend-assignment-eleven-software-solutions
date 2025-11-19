@@ -1,5 +1,6 @@
 import { ReactNode, useState } from "react";
-import { Menu, X, BookOpen } from "lucide-react";
+import { Menu, X, BookOpen, Sun, Moon } from "lucide-react";
+import { useTheme } from "../context/ThemeContext";
 
 interface LayoutProps {
   children: ReactNode;
@@ -16,6 +17,7 @@ const tabs = [
 
 export const Layout = ({ children, activeTab, onTabChange }: LayoutProps) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { theme, toggleTheme } = useTheme();
 
   const handleTabClick = (tabId: string) => {
     onTabChange(tabId);
@@ -28,14 +30,14 @@ export const Layout = ({ children, activeTab, onTabChange }: LayoutProps) => {
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100">
-      <nav className="bg-white shadow-lg sticky top-0 z-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 transition-colors duration-200">
+      <nav className="bg-white dark:bg-gray-800 shadow-lg sticky top-0 z-50 transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8">
           <div className="flex justify-between items-center h-14 sm:h-16">
             <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
-              <BookOpen className="text-blue-600 flex-shrink-0" size={28} />
+              <BookOpen className="text-blue-600 dark:text-blue-400 flex-shrink-0 transition-colors" size={28} />
               <h1
-                className="text-base sm:text-lg md:text-xl lg:text-2xl cursor-pointer font-bold text-gray-800 truncate touch-manipulation"
+                className="text-base sm:text-lg md:text-xl lg:text-2xl cursor-pointer font-bold text-gray-800 dark:text-gray-100 truncate touch-manipulation transition-colors"
                 onClick={(e) => {
                   e.preventDefault();
                   e.stopPropagation();
@@ -47,18 +49,42 @@ export const Layout = ({ children, activeTab, onTabChange }: LayoutProps) => {
               </h1>
             </div>
 
-            <button
-              type="button"
-              onClick={(e) => {
-                e.preventDefault();
-                e.stopPropagation();
-                setMobileMenuOpen(!mobileMenuOpen);
-              }}
-              className="lg:hidden p-2 rounded-lg hover:bg-gray-100 active:bg-gray-200 transition-colors touch-manipulation flex-shrink-0 cursor-pointer relative z-10 min-w-[44px] min-h-[44px] flex items-center justify-center"
-              aria-label="Toggle menu"
-            >
-              {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-            </button>
+            <div className="flex items-center gap-2">
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  toggleTheme();
+                }}
+                className="p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 active:bg-gray-200 dark:active:bg-gray-600 transition-colors touch-manipulation flex-shrink-0 cursor-pointer relative z-10 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                aria-label="Toggle theme"
+                title={theme === 'light' ? 'Switch to dark mode' : 'Switch to light mode'}
+              >
+                {theme === 'light' ? (
+                  <Moon size={20} className="text-gray-700 dark:text-gray-200" />
+                ) : (
+                  <Sun size={20} className="text-yellow-500 dark:text-yellow-400" />
+                )}
+              </button>
+
+              <button
+                type="button"
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  setMobileMenuOpen(!mobileMenuOpen);
+                }}
+                className="lg:hidden p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-700 active:bg-gray-200 dark:active:bg-gray-600 transition-colors touch-manipulation flex-shrink-0 cursor-pointer relative z-10 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                aria-label="Toggle menu"
+              >
+                {mobileMenuOpen ? (
+                  <X size={24} className="text-gray-700 dark:text-gray-300" />
+                ) : (
+                  <Menu size={24} className="text-gray-700 dark:text-gray-300" />
+                )}
+              </button>
+            </div>
 
             <div className="hidden lg:flex gap-2">
               {tabs.map((tab) => (
@@ -72,8 +98,8 @@ export const Layout = ({ children, activeTab, onTabChange }: LayoutProps) => {
                   }}
                   className={`px-3 xl:px-4 py-2 rounded-lg font-medium transition-colors text-sm xl:text-base whitespace-nowrap cursor-pointer ${
                     activeTab === tab.id
-                      ? "bg-blue-600 text-white"
-                      : "text-gray-700 hover:bg-gray-100"
+                      ? "bg-blue-600 dark:bg-blue-500 text-white"
+                      : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700"
                   }`}
                 >
                   {tab.label}
@@ -83,7 +109,7 @@ export const Layout = ({ children, activeTab, onTabChange }: LayoutProps) => {
           </div>
 
           {mobileMenuOpen && (
-            <div className="lg:hidden pb-4 border-t border-gray-200 mt-2 pt-2">
+            <div className="lg:hidden pb-4 border-t border-gray-200 dark:border-gray-700 mt-2 pt-2 transition-colors">
               <div className="flex flex-col gap-2">
                 {tabs.map((tab) => (
                   <button
@@ -96,8 +122,8 @@ export const Layout = ({ children, activeTab, onTabChange }: LayoutProps) => {
                     }}
                     className={`px-4 py-3 rounded-lg font-medium transition-colors text-left touch-manipulation cursor-pointer relative z-10 min-h-[44px] flex items-center ${
                       activeTab === tab.id
-                        ? "bg-blue-600 text-white"
-                        : "text-gray-700 hover:bg-gray-100 active:bg-gray-200"
+                        ? "bg-blue-600 dark:bg-blue-500 text-white"
+                        : "text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 active:bg-gray-200 dark:active:bg-gray-600"
                     }`}
                   >
                     {tab.label}
@@ -113,9 +139,9 @@ export const Layout = ({ children, activeTab, onTabChange }: LayoutProps) => {
         {children}
       </main>
 
-      <footer className="bg-white border-t border-gray-200 mt-8 sm:mt-12">
+      <footer className="bg-white dark:bg-gray-800 border-t border-gray-200 dark:border-gray-700 mt-8 sm:mt-12 transition-colors duration-200">
         <div className="max-w-7xl mx-auto px-3 sm:px-4 md:px-6 lg:px-8 py-4 sm:py-6">
-          <p className="text-center text-gray-600 text-xs sm:text-sm">
+          <p className="text-center text-gray-600 dark:text-gray-400 text-xs sm:text-sm transition-colors">
             Student Registration System 2025
           </p>
         </div>

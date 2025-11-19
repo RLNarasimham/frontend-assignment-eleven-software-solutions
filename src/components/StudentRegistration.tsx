@@ -63,9 +63,9 @@ export const StudentRegistration = () => {
 
   return (
     <div className="space-y-4 sm:space-y-6">
-      <div className="bg-white rounded-lg shadow-md p-4 sm:p-6">
+      <div className="bg-white dark:bg-gray-800 rounded-lg shadow-md p-4 sm:p-6 transition-colors duration-200">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-4 sm:mb-6 gap-3">
-          <h2 className="text-xl sm:text-2xl font-bold text-gray-800">Student Registration</h2>
+          <h2 className="text-xl sm:text-2xl font-bold text-gray-800 dark:text-gray-100 transition-colors">Student Registration</h2>
           <div className="flex gap-2 w-full sm:w-auto">
             <button
               type="button"
@@ -76,8 +76,8 @@ export const StudentRegistration = () => {
               }}
               className={`flex-1 sm:flex-none px-3 sm:px-4 py-2.5 sm:py-2 rounded-lg transition-colors flex items-center justify-center gap-2 font-medium text-sm sm:text-base touch-manipulation min-h-[44px] sm:min-h-0 cursor-pointer relative z-10 ${
                 viewMode === 'register'
-                  ? 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300 active:bg-gray-400'
+                  ? 'bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600 active:bg-blue-800 dark:active:bg-blue-700'
+                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 active:bg-gray-400 dark:active:bg-gray-500'
               }`}
             >
               <UserPlus size={18} />
@@ -92,8 +92,8 @@ export const StudentRegistration = () => {
               }}
               className={`flex-1 sm:flex-none px-3 sm:px-4 py-2.5 sm:py-2 rounded-lg transition-colors flex items-center justify-center gap-2 font-medium text-sm sm:text-base touch-manipulation min-h-[44px] sm:min-h-0 cursor-pointer relative z-10 ${
                 viewMode === 'view'
-                  ? 'bg-blue-600 text-white hover:bg-blue-700 active:bg-blue-800'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300 active:bg-gray-400'
+                  ? 'bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600 active:bg-blue-800 dark:active:bg-blue-700'
+                  : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 active:bg-gray-400 dark:active:bg-gray-500'
               }`}
             >
               <Users size={18} />
@@ -105,7 +105,7 @@ export const StudentRegistration = () => {
         {viewMode === 'register' ? (
           <div className="space-y-4">
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors">
                 Student Name
               </label>
               <input
@@ -113,12 +113,12 @@ export const StudentRegistration = () => {
                 value={studentName}
                 onChange={(e) => setStudentName(e.target.value)}
                 placeholder="Enter student name"
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent touch-manipulation"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent touch-manipulation bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 transition-colors"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors">
                 Student Email
               </label>
               <input
@@ -126,12 +126,12 @@ export const StudentRegistration = () => {
                 value={studentEmail}
                 onChange={(e) => setStudentEmail(e.target.value)}
                 placeholder="Enter student email"
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent touch-manipulation"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent touch-manipulation bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 transition-colors"
               />
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2 flex items-center gap-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 flex items-center gap-2 transition-colors">
                 <Filter size={16} />
                 Filter by Course Type
               </label>
@@ -141,7 +141,7 @@ export const StudentRegistration = () => {
                   setFilterCourseType(e.target.value);
                   setSelectedOffering('');
                 }}
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-3 touch-manipulation bg-white"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent mb-3 touch-manipulation bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors"
               >
                 <option value="">All Course Types</option>
                 {state.courseTypes.map((courseType) => (
@@ -153,13 +153,13 @@ export const StudentRegistration = () => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 mb-2">
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2 transition-colors">
                 Select Course Offering
               </label>
               <select
                 value={selectedOffering}
                 onChange={(e) => setSelectedOffering(e.target.value)}
-                className="w-full px-3 sm:px-4 py-2.5 sm:py-2 text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent touch-manipulation bg-white"
+                className="w-full px-3 sm:px-4 py-2.5 sm:py-2 text-base border border-gray-300 dark:border-gray-600 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent touch-manipulation bg-white dark:bg-gray-700 text-gray-900 dark:text-gray-100 transition-colors"
               >
                 <option value="">Select a course offering</option>
                 {filteredOfferings.map((offering) => (
@@ -169,21 +169,21 @@ export const StudentRegistration = () => {
                 ))}
               </select>
               {filterCourseType && filteredOfferings.length === 0 && (
-                <p className="text-amber-600 text-sm mt-2">
+                <p className="text-amber-600 dark:text-amber-400 text-sm mt-2 transition-colors">
                   No course offerings available for the selected course type
                 </p>
               )}
             </div>
 
             {error && (
-              <div className="p-3 bg-red-50 border border-red-200 rounded-lg">
-                <p className="text-red-600 text-sm">{error}</p>
+              <div className="p-3 bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800 rounded-lg transition-colors">
+                <p className="text-red-600 dark:text-red-400 text-sm transition-colors">{error}</p>
               </div>
             )}
 
             {success && (
-              <div className="p-3 bg-green-50 border border-green-200 rounded-lg">
-                <p className="text-green-600 text-sm">{success}</p>
+              <div className="p-3 bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800 rounded-lg transition-colors">
+                <p className="text-green-600 dark:text-green-400 text-sm transition-colors">{success}</p>
               </div>
             )}
 
@@ -204,7 +204,7 @@ export const StudentRegistration = () => {
             </button>
 
             {state.courseOfferings.length === 0 && (
-              <p className="text-amber-600 text-sm text-center">
+              <p className="text-amber-600 dark:text-amber-400 text-sm text-center transition-colors">
                 Please add course offerings before registering students
               </p>
             )}
@@ -212,37 +212,37 @@ export const StudentRegistration = () => {
         ) : (
           <div className="space-y-3 sm:space-y-4">
             {state.courseOfferings.length === 0 ? (
-              <p className="text-gray-500 text-center py-8 text-sm sm:text-base">No course offerings available</p>
+              <p className="text-gray-500 dark:text-gray-400 text-center py-8 text-sm sm:text-base transition-colors">No course offerings available</p>
             ) : (
               state.courseOfferings.map((offering) => {
                 const registrations = getRegistrationsForOffering(offering.id);
                 return (
-                  <div key={offering.id} className="border border-gray-200 rounded-lg p-3 sm:p-4">
-                    <h3 className="text-base sm:text-lg font-semibold text-gray-800 mb-2 sm:mb-3 break-words">
+                  <div key={offering.id} className="border border-gray-200 dark:border-gray-700 rounded-lg p-3 sm:p-4 transition-colors">
+                    <h3 className="text-base sm:text-lg font-semibold text-gray-800 dark:text-gray-100 mb-2 sm:mb-3 break-words transition-colors">
                       {getOfferingName(offering.courseId, offering.courseTypeId)}
                     </h3>
                     {registrations.length === 0 ? (
-                      <p className="text-gray-500 text-sm italic">No students registered yet</p>
+                      <p className="text-gray-500 dark:text-gray-400 text-sm italic transition-colors">No students registered yet</p>
                     ) : (
                       <div className="space-y-2">
                         {registrations.map((registration) => (
                           <div
                             key={registration.id}
-                            className="flex flex-col sm:flex-row sm:items-center justify-between p-2 sm:p-3 bg-gray-50 rounded gap-2"
+                            className="flex flex-col sm:flex-row sm:items-center justify-between p-2 sm:p-3 bg-gray-50 dark:bg-gray-700 rounded gap-2 transition-colors"
                           >
                             <div className="flex-1 min-w-0">
-                              <p className="font-medium text-gray-800 text-sm sm:text-base break-words">{registration.studentName}</p>
-                              <p className="text-xs sm:text-sm text-gray-600 break-all">{registration.studentEmail}</p>
+                              <p className="font-medium text-gray-800 dark:text-gray-100 text-sm sm:text-base break-words transition-colors">{registration.studentName}</p>
+                              <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 break-all transition-colors">{registration.studentEmail}</p>
                             </div>
-                            <p className="text-xs text-gray-500 flex-shrink-0 sm:ml-4">
+                            <p className="text-xs text-gray-500 dark:text-gray-400 flex-shrink-0 sm:ml-4 transition-colors">
                               {new Date(registration.registeredAt).toLocaleString()}
                             </p>
                           </div>
                         ))}
                       </div>
                     )}
-                    <div className="mt-2 pt-2 border-t border-gray-200">
-                      <p className="text-xs sm:text-sm text-gray-600">
+                    <div className="mt-2 pt-2 border-t border-gray-200 dark:border-gray-700 transition-colors">
+                      <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-400 transition-colors">
                         Total Students: <span className="font-semibold">{registrations.length}</span>
                       </p>
                     </div>

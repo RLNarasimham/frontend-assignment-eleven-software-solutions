@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { AppProvider } from './context/AppContext';
+import { ThemeProvider } from './context/ThemeContext';
 import { Layout } from './components/Layout';
 import { CourseTypes } from './components/CourseTypes';
 import { Courses } from './components/Courses';
@@ -25,11 +26,13 @@ function App() {
   };
 
   return (
-    <AppProvider>
-      <Layout activeTab={activeTab} onTabChange={setActiveTab}>
-        {renderContent()}
-      </Layout>
-    </AppProvider>
+    <ThemeProvider>
+      <AppProvider>
+        <Layout activeTab={activeTab} onTabChange={setActiveTab}>
+          {renderContent()}
+        </Layout>
+      </AppProvider>
+    </ThemeProvider>
   );
 }
 
